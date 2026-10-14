@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="theme-color" content="#070b10">
+<title>Fuga do Labirinto</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+  <canvas id="game"></canvas>
+
+  <!-- ============ HUD ============ -->
+  <div id="hud" class="hidden">
+    <div class="hud-top">
+      <div class="hud-left">
+        <div class="pill" id="levelInfo">FASE 1 / 5</div>
+      </div>
+      <div class="hud-center">
+        <div id="timer">00:00</div>
+        <div id="stateInfo" class="state stealth">FURTIVO</div>
+      </div>
+      <div class="hud-right">
+        <button id="btnPause" class="mini-btn">II</button>
+      </div>
+    </div>
+
+    <div id="banner" class="hidden"></div>
+
+    <div id="hint">WASD ou setas para mover &middot; <b>Shift</b> = andar devagar (silencioso) &middot; <b>P</b> = pausa &middot; chegue no portal verde</div>
+
+    <div id="joy"><div id="joyBase"><div id="joyKnob"></div></div></div>
+  </div>
+
+  <!-- ============ MENU ============ -->
+  <section id="menu" class="screen">
+    <h1 class="title">FUGA<span>DO LABIRINTO</span></h1>
+    <p class="subtitle">Chegue ao portal verde sem ser alcançado pelos guardas. São 5 fases, cada uma com um labirinto diferente — e você tem só 2 minutos para escapar de tudo.</p>
+
+    <div class="rules">
+      <p><b>Mover:</b> WASD, setas ou arraste na tela (celular)</p>
+      <p><b>Shift:</b> anda devagar e faz menos barulho &mdash; os guardas te enxergam de mais perto</p>
+      <p><b>Atenção:</b> fique fora do cone de visão dos guardas. Se você for visto, eles perseguem; se te tocarem, você é pego.</p>
+      <p><b>Contra o relógio:</b> 2 minutos para escapar das 5 fases. O tempo não para na pausa.</p>
+    </div>
+
+    <button id="btnPlay" class="big-btn">JOGAR</button>
+  </section>
+
+  <!-- ============ PAUSA ============ -->
+  <section id="pause" class="screen overlay hidden">
+    <h2>PAUSADO</h2>
+    <div class="pause-stats" id="pauseStats"></div>
+    <button id="btnResume" class="big-btn">CONTINUAR</button>
+    <button id="btnQuit" class="big-btn alt">ABANDONAR</button>
+  </section>
+
+  <!-- ============ FASE COMPLETA ============ -->
+  <section id="levelclear" class="screen overlay hidden">
+    <h2 id="clearTitle">FASE COMPLETA</h2>
+    <p class="subtitle" id="clearSub">Chegou ao portal sem ser pego.</p>
+    <div class="results" id="clearStats"></div>
+    <button id="btnNext" class="big-btn">PRÓXIMA FASE</button>
+  </section>
+
+  <!-- ============ PEGO ============ -->
+  <section id="gameover" class="screen overlay hidden">
+    <h2 id="overTitle">VOCÊ FOI PEGO</h2>
+    <p class="subtitle" id="overSub">Um guarda te alcançou no labirinto.</p>
+    <button id="btnRetry" class="big-btn">TENTAR DE NOVO</button>
+    <button id="btnMenuOver" class="big-btn alt">MENU</button>
+  </section>
+
+  <!-- ============ VITÓRIA ============ -->
+  <section id="victory" class="screen overlay hidden">
+    <h2>VOCÊ ESCAPOU!</h2>
+    <p class="subtitle">Todas as 5 fases concluídas sem ser alcançado.</p>
+    <div class="results" id="winStats"></div>
+    <button id="btnMenuWin" class="big-btn">MENU</button>
+  </section>
+</div>
+
+<script src="js/utils.js"></script>
+<script src="js/input.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/levels.js"></script>
+<script src="js/game.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
